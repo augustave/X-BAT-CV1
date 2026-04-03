@@ -1,0 +1,31 @@
+export const shipSpecs = {
+  designation: 'X-BAT CVA-1',
+  className: 'DEADLIGHT',
+  type: 'AUTONOMOUS VTOL CARRIER',
+  displacement: '28,500 t',
+  lengthOA: '210 m / 689 ft',
+  beam: '42 m / 138 ft',
+  crew: '45 (autonomous ops)',
+  xbatCapacity: '120+ airframes',
+  hangar: '3-tier modular cells',
+  sortieRate: '32 / hr sustained',
+  propulsion: 'IEP / waterjet',
+  endurance: '45 days unrefueled',
+  speed: '30+ knots sustained',
+  rcsReduction: '94% vs Nimitz',
+  freeboard: '5m waterline to deck',
+  hullDepth: '18m total',
+  tumblehomeAngle: '8\u00B0 inward rake',
+} as const;
+
+export const specGrid = [
+  { label: 'Displacement', value: shipSpecs.displacement },
+  { label: 'X-BAT capacity', value: shipSpecs.xbatCapacity },
+  { label: 'Crew', value: shipSpecs.crew },
+  { label: 'Length OA', value: shipSpecs.lengthOA },
+  { label: 'Hangar', value: shipSpecs.hangar },
+  { label: 'Sortie rate', value: shipSpecs.sortieRate },
+  { label: 'Beam', value: shipSpecs.beam },
+  { label: 'Propulsion', value: shipSpecs.propulsion },
+  { label: 'Endurance', value: shipSpecs.endurance },
+] as const;
