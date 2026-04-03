@@ -14,21 +14,21 @@ export function AnimationControls() {
 
   return (
     <div className="flex items-center gap-3">
-      <span className="text-[8px] font-mono font-bold tracking-[0.2em] uppercase" style={{ color: '#4a4f44' }}>
+      <span className="text-[9px] font-mono font-bold tracking-[0.2em] uppercase" style={{ color: '#6b7264' }}>
         DRONE OPS
       </span>
-      <div className="flex gap-0" style={{ border: '2px solid #2a2b2d' }}>
+      <div className="flex gap-0" style={{ border: '2px solid #3a3b36' }}>
         {modes.map(mode => {
           const isActive = animationMode === mode.id;
           return (
             <button
               key={mode.id}
               onClick={() => setAnimationMode(mode.id)}
-              className="px-2.5 py-1.5 text-[8px] font-mono font-bold tracking-wider uppercase cursor-pointer transition-none"
+              className="px-3 py-2 text-[10px] font-mono font-bold tracking-wider uppercase cursor-pointer transition-none"
               style={{
-                color: isActive ? '#1F2022' : '#6b7264',
+                color: isActive ? '#1F2022' : '#8FA388',
                 backgroundColor: isActive ? '#8FA388' : '#1F2022',
-                borderRight: '1px solid #2a2b2d',
+                borderRight: '1px solid #3a3b36',
               }}
             >
               {mode.label}
@@ -36,18 +36,18 @@ export function AnimationControls() {
           );
         })}
       </div>
-      <div className="flex gap-0 ml-1" style={{ border: '2px solid #2a2b2d' }}>
+      <div className="flex gap-0" style={{ border: '2px solid #3a3b36' }}>
         {speeds.map(speed => {
           const isActive = animationSpeed === speed;
           return (
             <button
               key={speed}
               onClick={() => setAnimationSpeed(speed)}
-              className="px-2 py-1.5 text-[8px] font-mono font-bold cursor-pointer transition-none"
+              className="px-2.5 py-2 text-[10px] font-mono font-bold cursor-pointer transition-none"
               style={{
-                color: isActive ? '#1F2022' : '#4a4f44',
+                color: isActive ? '#1F2022' : '#6b7264',
                 backgroundColor: isActive ? '#6b7264' : '#1F2022',
-                borderRight: '1px solid #2a2b2d',
+                borderRight: '1px solid #3a3b36',
               }}
             >
               {speed}×

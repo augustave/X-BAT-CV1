@@ -4,6 +4,7 @@ import { useViewerStore, type ViewId } from './stores/viewerStore';
 import { ViewTabs } from './components/layout/ViewTabs';
 import { DetailPanel } from './components/layout/DetailPanel';
 import { StatusBar } from './components/layout/StatusBar';
+import { AnimationControls } from './components/ui/AnimationControls';
 import { BootSequence } from './components/ui/BootSequence';
 import { PlanView } from './components/svg/PlanView';
 import { HangarDeck } from './components/svg/HangarDeck';
@@ -59,27 +60,39 @@ function App() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.1, delay: 0.05 }}
-        className="flex items-center justify-between px-5 py-2.5"
         style={{
           backgroundColor: '#1F2022',
           borderBottom: '3px solid #2a2b2d',
           boxShadow: 'inset 0 -1px 0 #3a3b36',
         }}
       >
-        <div>
-          <div
-            className="text-[14px] font-mono font-bold tracking-[0.2em] uppercase"
-            style={{ color: '#8FA388' }}
-          >
-            X-BAT CVA-1
+        {/* Top row: title + drone ops controls */}
+        <div className="flex items-center justify-between px-5 py-2.5">
+          <div>
+            <div
+              className="text-[14px] font-mono font-bold tracking-[0.2em] uppercase"
+              style={{ color: '#8FA388' }}
+            >
+              X-BAT CVA-1
+            </div>
+            <div className="text-[9px] font-mono tracking-[0.14em] uppercase" style={{ color: '#6b7264' }}>
+              AUTONOMOUS VTOL CARRIER — DEADLIGHT CLASS
+            </div>
           </div>
-          <div className="text-[9px] font-mono tracking-[0.14em] uppercase" style={{ color: '#6b7264' }}>
-            AUTONOMOUS VTOL CARRIER — DEADLIGHT CLASS
+          <div className="flex items-center gap-6">
+            <AnimationControls />
+            <div className="text-right text-[8px] font-mono leading-relaxed uppercase tracking-wider" style={{ color: '#4a4f44' }}>
+              CONCEPT // MARCH 2026<br />
+              SYS VIEWER v1.0
+            </div>
           </div>
         </div>
-        <div className="text-right text-[8px] font-mono leading-relaxed uppercase tracking-wider" style={{ color: '#4a4f44' }}>
-          CONCEPT // MARCH 2026<br />
-          SYS VIEWER v1.0
+        {/* Bottom row: view tabs */}
+        <div
+          className="flex items-center px-5 py-1.5"
+          style={{ borderTop: '1px solid #2a2b2d', backgroundColor: '#1a1b1c' }}
+        >
+          <ViewTabs />
         </div>
       </motion.header>
 
@@ -109,21 +122,11 @@ function App() {
           </AnimatePresence>
         </div>
 
-        {/* View tabs — bottom left, hardware style */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.1, delay: 0.1 }}
-          className="absolute bottom-3 left-3 z-10"
-        >
-          <ViewTabs />
-        </motion.div>
-
         {/* Detail panel */}
         <DetailPanel />
       </div>
 
-      {/* Status bar — bottom bezel */}
+      {/* Status bar — bottom bezel (specs only) */}
       <StatusBar />
     </div>
   );
