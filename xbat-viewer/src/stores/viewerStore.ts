@@ -23,7 +23,7 @@ export const useViewerStore = create<ViewerState>((set) => ({
   activeView: 'plan',
   activeZone: null,
   hoveredZone: null,
-  animationMode: 'idle',
+  animationMode: 'full-cycle',
   animationSpeed: 1,
   detailPanelOpen: false,
 
