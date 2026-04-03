@@ -1,9 +1,10 @@
-import { useEffect } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useViewerStore, type ViewId } from './stores/viewerStore';
 import { ViewTabs } from './components/layout/ViewTabs';
 import { DetailPanel } from './components/layout/DetailPanel';
 import { StatusBar } from './components/layout/StatusBar';
+import { BootSequence } from './components/ui/BootSequence';
 import { PlanView } from './components/svg/PlanView';
 import { HangarDeck } from './components/svg/HangarDeck';
 import { SideElevation } from './components/svg/SideElevation';
@@ -24,6 +25,8 @@ const mechTransition = { duration: 0.15, ease: [0.32, 0, 0.67, 0] as const };
 function App() {
   const { activeView, setActiveView, setActiveZone, closePanel } = useViewerStore();
   const ViewComponent = viewComponents[activeView];
+  const [booted, setBooted] = useState(false);
+  const handleBootComplete = useCallback(() => setBooted(true), []);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -46,6 +49,11 @@ function App() {
 
   return (
     <div className="h-full flex flex-col film-grain relative" style={{ backgroundColor: '#141516' }}>
+      {/* Boot sequence overlay */}
+      <AnimatePresence>
+        {!booted && <BootSequence onComplete={handleBootComplete} />}
+      </AnimatePresence>
+
       {/* Hardware bezel header */}
       <motion.header
         initial={{ opacity: 0 }}
