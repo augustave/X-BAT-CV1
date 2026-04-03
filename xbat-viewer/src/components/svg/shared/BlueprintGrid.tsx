@@ -1,3 +1,5 @@
+import React from 'react';
+
 interface Props {
   width: number;
   height: number;
@@ -6,8 +8,8 @@ interface Props {
 }
 
 export function BlueprintGrid({ width, height, majorStep = 40, minorStep = 20 }: Props) {
-  const majorLines: JSX.Element[] = [];
-  const minorLines: JSX.Element[] = [];
+  const majorLines: React.ReactElement[] = [];
+  const minorLines: React.ReactElement[] = [];
 
   for (let y = majorStep; y < height; y += majorStep) {
     majorLines.push(<line key={`mh${y}`} x1="0" y1={y} x2={width} y2={y} />);
